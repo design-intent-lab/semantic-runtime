@@ -59,10 +59,41 @@ def ensure_material(name: str, mat_type: str):
 
 '''
 
-TEMPLATE_FOOTER = """
+OUTPUT_BASE = "/tmp/semantic_task"
+
+
+def make_footer(task_name: str) -> str:
+    safe_name = task_name.replace(" ", "_").replace("#", "")
+    return f'''
+OUTPUT_PATH = "{OUTPUT_BASE}_{safe_name}"
+
 clean_scene()
 run()
-"""
+
+if not bpy.context.scene.camera:
+    bpy.ops.object.camera_add(location=(5, -5, 5))
+    cam = bpy.context.active_object
+    cam.rotation_euler = (math.radians(54.7), 0, math.radians(45))
+    bpy.context.scene.camera = cam
+if not any(o.type == "LIGHT" for o in bpy.data.objects):
+    bpy.ops.object.light_add(type="SUN", location=(5, -5, 10))
+    bpy.context.active_object.data.energy = 5
+
+bpy.ops.wm.save_as_mainfile(filepath=OUTPUT_PATH + ".blend")
+bpy.context.scene.render.filepath = OUTPUT_PATH + ".png"
+bpy.context.scene.render.resolution_x = 1280
+bpy.context.scene.render.resolution_y = 720
+bpy.context.scene.render.engine = "CYCLES"
+bpy.context.scene.cycles.device = "CPU"
+bpy.context.scene.cycles.samples = 16
+bpy.context.scene.cycles.use_denoising = False
+try:
+    bpy.ops.render.render(write_still=True)
+    print(f"Rendered {{OUTPUT_PATH}}.png")
+except Exception as e:
+    print(f"Render skipped: {{e}}")
+print(f"Saved {{OUTPUT_PATH}}.blend")
+'''
 
 
 def resolve_target(ref: dict | None, context: dict) -> str:
@@ -308,16 +339,18 @@ def gen_configure_render(params: dict, ctx: dict) -> list[str]:
     denoise = params.get("use_denoising", True)
     fmt = params.get("output_format", "PNG")
     quality = params.get("quality", 80)
+    blender_engine = "BLENDER_EEVEE_NEXT" if engine.upper() == "EEVEE" else engine
     lines = [
-        f'    bpy.context.scene.render.engine = "{engine}"',
+        f'    bpy.context.scene.render.engine = "{blender_engine}"',
         f'    bpy.context.scene.render.resolution_x = {res_x}',
         f'    bpy.context.scene.render.resolution_y = {res_y}',
-        f'    bpy.context.scene.eevee.taa_samples = {samples} if "{engine}" == "EEVEE" else {samples}',
+        f'    if hasattr(bpy.context.scene.eevee, "taa_render_samples"): bpy.context.scene.eevee.taa_render_samples = {samples}',
+        f'    if hasattr(bpy.context.scene.eevee, "taa_samples"): bpy.context.scene.eevee.taa_samples = {samples}',
         f'    bpy.context.scene.render.image_settings.file_format = "{fmt}"',
         f'    bpy.context.scene.render.image_settings.quality = {quality}',
     ]
     if denoise:
-        lines.append(f'    bpy.context.scene.eevee.use_denoising = True')
+        lines.append(f'    # denoising: EEVEE-next uses ray tracing by default')
     return lines
 
 
@@ -408,7 +441,10 @@ def translate(task_path: str) -> str:
     else:
         blocks.append(f'    # warning: no task found in YAML')
 
-    return TEMPLATE_HEADER + "\n".join(blocks) + "\n\n" + TEMPLATE_FOOTER
+    task_name = ""
+    if "task" in task and "intent" in task["task"]:
+        task_name = task["task"]["intent"].get("goal", "unknown")
+    return TEMPLATE_HEADER + "\n".join(blocks) + "\n\n" + make_footer(task_name)
 
 
 if __name__ == "__main__":
