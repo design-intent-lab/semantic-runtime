@@ -23,10 +23,13 @@ task:
         object_type: "cube"
         name: "TableTop"
         location: [0, 0, 0.8]
+        rotation: [0, 0, 0]
         scale: [0.8, 0.5, 0.05]
     - type: "assign_material"
       parameters:
-        target: "TableTop"
+        target_ref:
+          type: "name"
+          value: "TableTop"
         material_type: "wood"
         material_name: "WoodTableTop"
     - type: "create_object"
@@ -34,28 +37,34 @@ task:
         object_type: "cone"
         name: "Leg1"
         location: [-0.65, -0.35, 0.35]
+        rotation: [3.1416, 0, 0]
         scale: [0.05, 0.05, 0.35]
     - type: "create_object"
       parameters:
         object_type: "cone"
         name: "Leg2"
         location: [0.65, -0.35, 0.35]
+        rotation: [3.1416, 0, 0]
         scale: [0.05, 0.05, 0.35]
     - type: "create_object"
       parameters:
         object_type: "cone"
         name: "Leg3"
         location: [-0.65, 0.35, 0.35]
+        rotation: [3.1416, 0, 0]
         scale: [0.05, 0.05, 0.35]
     - type: "create_object"
       parameters:
         object_type: "cone"
         name: "Leg4"
         location: [0.65, 0.35, 0.35]
+        rotation: [3.1416, 0, 0]
         scale: [0.05, 0.05, 0.35]
     - type: "assign_material"
       parameters:
-        target_mode: "all_selected"
+        target_ref:
+          type: "description"
+          value: "جميع الأرجل"
         material_type: "wood"
         material_name: "WoodLegs"
   dry_run: false

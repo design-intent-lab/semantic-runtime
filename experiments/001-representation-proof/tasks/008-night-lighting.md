@@ -18,18 +18,31 @@ task:
       type: "user_approval"
     confidence: 0.0
   transformations:
-    - type: "adjust_scene_temperature"
+    - type: "analyze_scene"
       parameters:
-        method: "color_temperature"
-        value: "cold"
-        light_color_temp: 8000
+        analysis_type: "find_target"
+        description: "جميع مصادر الإضاءة الحالية في المشهد"
+        target_ref:
+          type: "description"
+          value: "جميع مصادر الإضاءة"
     - type: "modify_world_settings"
       parameters:
-        strength: 0.1
-        color: [0.1, 0.1, 0.3]
-    - type: "adjust_existing_lights"
+        strength: 0.05
+        color: [0.05, 0.05, 0.2]
+    - type: "adjust_light_color"
       parameters:
-        energy_multiplier: 0.3
+        target_ref:
+          type: "description"
+          value: "جميع مصادر الإضاءة"
+        color: [0.3, 0.4, 0.8]
+        energy_multiplier: 0.25
+    - type: "analyze_scene"
+      parameters:
+        analysis_type: "check_lighting_result"
+        description: "قياس إذا كانت الإضاءة الناتجة ليلية"
+        target_ref:
+          type: "description"
+          value: "المشهد بأكمله"
   dry_run: false
 ```
 

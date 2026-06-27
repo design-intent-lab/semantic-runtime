@@ -23,10 +23,13 @@ task:
         object_type: "cube"
         name: "Cube"
         location: [0, 0, 0]
+        rotation: [0, 0, 0]
         scale: [1, 1, 1]
     - type: "assign_material"
       parameters:
-        target: "Cube"
+        target_ref:
+          type: "name"
+          value: "Cube"
         material_type: "wood"
         material_name: "WoodMaterial"
   dry_run: false
