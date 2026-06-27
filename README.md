@@ -110,7 +110,7 @@ The current project intentionally does not attempt to:
 
 **Current phase:** ✓ Representation ✓ Execution ✓ Learning
 
-**Next milestone:** □ Independent replication by external developers
+**Next milestone:** □ Independent replication by 5 external developers (zero interventions)
 
 **Future work:** □ Additional backends □ Larger evaluation datasets □ Public benchmark suite
 

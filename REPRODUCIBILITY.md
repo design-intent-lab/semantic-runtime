@@ -92,3 +92,29 @@ clone → cd reference → ./run.sh → verify → done
 ```
 
 Measured: **9 seconds** in the development environment.
+
+## Replication metrics (per developer)
+
+| Metric | Why it matters |
+|--------|---------------|
+| **First error encountered** | Reveals the first real friction point in the UX |
+| **First successful output time** | Time until the developer sees a visible result (evidence.md, .png) |
+| **Qualitative question** | "Explain this project to a colleague in one sentence." Converging answers = clear message. Diverging answers = README needs improvement. |
+
+## Sprint roadmap
+
+```
+Replication Sprint
+        ↓
+Fix only issues that prevent reproduction
+        ↓
+Improve docs only if data shows the need
+        ↓
+Release v1.0.0
+        ↓
+Write paper + open repository to public
+```
+
+**No new features. No scope expansion. Data first, then conclusions, then expansion.**
+
+The real success criterion: **five independent developers. `git clone`. `./run.sh`. Result. Zero interventions.**
