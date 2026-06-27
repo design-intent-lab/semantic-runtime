@@ -16,7 +16,12 @@ It is **not** a replacement for Blender. It is **not** a new AI model. It is a *
 
 ## Research Status
 
-This repository represents an active research prototype. The semantic representation, experiments, and implementation are expected to evolve as hypotheses are confirmed, refined, or rejected through reproducible evidence.
+This repository represents an active research prototype. The semantic
+representation, experiments, and implementation are expected to evolve as
+hypotheses are confirmed, refined, or rejected through reproducible evidence.
+
+**Current phase:** Passive observation. No modifications will be made until
+external replication data is collected and analyzed.
 
 ---
 
@@ -43,7 +48,7 @@ Blender remains the source of truth for scene state. The semantic runtime mainta
 ## Quick Start
 
 ```bash
-git clone https://github.com/your-org/semantic-runtime.git
+git clone https://github.com/design-intent-lab/semantic-runtime.git
 cd semantic-runtime/reference
 ./run.sh
 ```
@@ -124,7 +129,7 @@ If you use this work in your research:
 @software{semantic_runtime,
   title = {semantic-runtime: A Reproducible Semantic Runtime for Design Intent},
   year = {2026},
-  url = {https://github.com/your-org/semantic-runtime}
+  url = {https://github.com/design-intent-lab/semantic-runtime}
 }
 ```
 
