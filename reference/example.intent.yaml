@@ -1,0 +1,7 @@
+goal: "اجعل الإضاءة دافئة"
+constraints:
+  color_temperature: 3500
+  engine: "CYCLES"
+success_criteria:
+  type: "user_approval"
+confidence: 0.0
