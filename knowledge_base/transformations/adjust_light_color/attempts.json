@@ -1,0 +1,87 @@
+[
+  {
+    "scene": "01_sunny_room",
+    "scene_signature": "lights=2_energy=510_temp=5500",
+    "parameters": {
+      "color": [
+        0.3,
+        0.4,
+        0.8
+      ],
+      "energy_multiplier": 0.25
+    },
+    "success": true,
+    "confidence": 0.0,
+    "user_intervention": 0,
+    "timestamp": "2026-06-27T19:29:11.652288",
+    "attempt_number": 1
+  },
+  {
+    "scene": "02_warm_interior",
+    "scene_signature": "lights=2_energy=300_temp=3500",
+    "parameters": {
+      "color": [
+        0.3,
+        0.4,
+        0.8
+      ],
+      "energy_multiplier": 0.25
+    },
+    "success": true,
+    "confidence": 0.8999999999999999,
+    "user_intervention": 0,
+    "timestamp": "2026-06-27T19:29:16.689665",
+    "attempt_number": 2
+  },
+  {
+    "scene": "03_studio",
+    "scene_signature": "lights=3_energy=2300_temp=5000",
+    "parameters": {
+      "color": [
+        0.3,
+        0.4,
+        0.8
+      ],
+      "energy_multiplier": 0.25
+    },
+    "success": true,
+    "confidence": 0.99,
+    "user_intervention": 0,
+    "timestamp": "2026-06-27T19:29:23.140093",
+    "attempt_number": 3
+  },
+  {
+    "scene": "04_overcast_outdoor",
+    "scene_signature": "lights=1_energy=3_temp=6500",
+    "parameters": {
+      "color": [
+        0.3,
+        0.4,
+        0.8
+      ],
+      "energy_multiplier": 0.25
+    },
+    "success": true,
+    "confidence": 0.99,
+    "user_intervention": 0,
+    "timestamp": "2026-06-27T19:29:30.690448",
+    "attempt_number": 4
+  },
+  {
+    "scene": "05_partial_night",
+    "scene_signature": "lights=2_energy=70_temp=8000",
+    "parameters": {
+      "color": [
+        0.3,
+        0.4,
+        0.8
+      ],
+      "energy_multiplier": 0.25
+    },
+    "success": true,
+    "confidence": 0.99,
+    "user_intervention": 0,
+    "timestamp": "2026-06-27T19:29:35.814703",
+    "attempt_number": 5
+  }
+]
