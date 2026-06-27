@@ -1,54 +1,135 @@
-# Semantic Runtime
+# semantic-runtime
 
-A reproducible semantic runtime for representing, executing, and evaluating design intent in 3D content creation.
+**A reproducible semantic runtime for representing, executing, and evaluating design intent through observable transformations.**
 
-**تمثيل التفكير التصميمي بطريقة منظمة يمكن تنفيذها وقياسها ومراجعتها وتحسينها اعتماداً على الأدلة.**
+---
 
-## Quick start
+## Overview
+
+Most design software saves **what** you created. It does not save **how you thought** while creating it.
+
+`semantic-runtime` is a research platform that asks: *Can we represent design thinking itself — not just the result, but the intent, the plan, the constraints, and the observable transformations — in a structured, measurable, and reproducible way?*
+
+It is **not** a replacement for Blender. It is **not** a new AI model. It is a **semantic layer** that sits between natural language intent and 3D execution, recording the transformations that happened so they can be reviewed, measured, learned from, and reproduced.
+
+---
+
+## Research Status
+
+This repository represents an active research prototype. The semantic representation, experiments, and implementation are expected to evolve as hypotheses are confirmed, refined, or rejected through reproducible evidence.
+
+---
+
+## Experimental Evidence
+
+This repository contains reproducible experimental evidence for the current implementation. The results support — but do not conclusively prove — the project's current hypotheses.
+
+| Experiment | Status | What It Shows |
+|------------|--------|---------------|
+| 001 — Representation Proof | ✅ 10/10 | The semantic schema can describe 10 diverse design tasks |
+| 002 — Execution Proof | ✅ 3/3 | The schema can be translated into Blender and produce `.blend` + `.png` |
+| 003 — Learning Proof | ✅ 5/5 | The system improves confidence across repeated attempts |
+
+---
+
+## Repository Philosophy
+
+This project does not aim to replace design tools or AI models. It studies one specific question: **Can design intent be represented, executed, and evaluated in a way that is explainable, measurable, falsifiable, and reproducible?** Blender is the first backend. The semantic representation is tool-agnostic by design.
+
+Blender remains the source of truth for scene state. The semantic runtime maintains only semantic representations and observable transformations. It never attempts to replace the underlying scene model.
+
+---
+
+## Quick Start
 
 ```bash
-cd reference
+git clone https://github.com/your-org/semantic-runtime.git
+cd semantic-runtime/reference
 ./run.sh
-# → output/evidence.md, output/result.blend, output/result.png
-# ≤ 15 minutes for a new developer
 ```
 
-## The problem
+See `REPRODUCIBILITY.md` for detailed steps, expected outputs, and verification.
 
-Design software records *what* was created, not *how* the designer thought.
+---
 
-## The contribution
+## Repository Structure
 
-A unified semantic representation for creative workflows that is **explainable, repeatable, measurable, falsifiable, and keeps the human in the loop.**
+```
+semantic-runtime/
+├── README.md                   # You are here
+├── REPRODUCIBILITY.md          # How to reproduce all results
+├── ARCHITECTURE.md             # System design and layer boundaries
+├── LIMITATIONS.md              # What this project does NOT claim
+├── docs/
+│   ├── 01-theory.md            # The immutable constitution
+│   ├── 02-model.md             # The updatable model
+│   ├── 03-implementation.md    # The replaceable implementation
+│   └── 04-evidence.md          # All experimental evidence
+├── spec/
+│   ├── semantic-representation-0.1.0.md   # Archived: disproven
+│   └── semantic-representation-0.2.0.md   # Current: proven
+├── reference/
+│   ├── README.md               # 15-minute replication guide
+│   ├── run.sh
+│   ├── example.intent.yaml
+│   └── runtime.py
+├── experiments/
+│   ├── 001-representation-proof/
+│   ├── 002-execution-proof/
+│   └── 003-learning-proof/
+├── src/
+│   ├── translator.py
+│   └── learner.py
+└── knowledge_base/
+```
 
-## Project status
+---
 
-| Experiment | Result | Date |
-|-----------|--------|------|
-| 001 — Representation proof (v0.1.0) | ❌ 6/10 | 2026-06-27 |
-| 001 — Representation proof (v0.2.0) | ✅ 10/10 | 2026-06-27 |
-| 002 — Execution proof | ✅ 3/3 | 2026-06-27 |
-| 003 — Learning proof | ✅ confidence 0.0→0.99 | 2026-06-27 |
+## Design Principles
 
-## Key files
+1. **Explainable** — Every decision shows its reasoning and alternatives
+2. **Repeatable** — Successful decisions become reusable rules
+3. **Measurable** — Objective metrics separate from interpretive judgments
+4. **Falsifiable** — Every rule is a hypothesis that can be disproven
+5. **Human in the Loop** — The final creative decision always belongs to the human
 
-| File | Purpose |
-|------|---------|
-| `docs/01-theory.md` | Constitution — fundamental principles |
-| `spec/semantic-representation-0.2.0.md` | Current specification (proven) |
-| `reference/runtime.py` | Minimal reference executable (≤200 lines, zero deps) |
-| `src/translator.py` | Full YAML→bpy translator (12 transform types) |
-| `src/learner.py` | Knowledge base and confidence scoring |
+---
 
-## Architecture
+## Non-goals
 
-Three layers with strict dependency direction: **Theory → Model → Implementation**. See `ARCHITECTURE.md`.
+The current project intentionally does not attempt to:
+- create a universal creativity model
+- replace existing DCC applications
+- optimize rendering pipelines
+- benchmark LLMs
+- automate all design decisions
 
-## Success metrics
+---
 
-| Metric | Current | Target |
-|--------|---------|--------|
-| Replication time | ≤5 min | ≤15 min |
-| Experiments completed | 3/3 | — |
-| Spec versions tested | 2 (v0.1.0, v0.2.0) | — |
-| Evidence documents | 4 (one per experiment + reference) | — |
+## Research Roadmap
+
+**Current phase:** ✓ Representation ✓ Execution ✓ Learning
+
+**Next milestone:** □ Independent replication by external developers
+
+**Future work:** □ Additional backends □ Larger evaluation datasets □ Public benchmark suite
+
+---
+
+## Citation
+
+If you use this work in your research:
+
+```bibtex
+@software{semantic_runtime,
+  title = {semantic-runtime: A Reproducible Semantic Runtime for Design Intent},
+  year = {2026},
+  url = {https://github.com/your-org/semantic-runtime}
+}
+```
+
+---
+
+## License
+
+MIT — See `LICENSE` for details.
