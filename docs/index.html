@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentinel OS - The Control Plane for Agentic AI Systems</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            font-family: 'Courier New', monospace;
+        }
+        .demo-output {
+            min-height: 200px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-5xl font-bold mb-6">
+                <span class="text-yellow-300">🛡️ Sentinel OS</span>
+            </h1>
+            <h2 class="text-3xl font-semibold mb-4">
+                The Control Plane for Agentic AI Systems
+            </h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">
+                AI agents are powerful. But completely uncontrollable. We fix that.
+            </p>
+            <div class="flex justify-center gap-4">
+                <button onclick="document.getElementById('demo').scrollIntoView({behavior: 'smooth'})" 
+                        class="bg-white text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+                    Try Live Demo
+                </button>
+                <a href="https://github.com/yourusername/sentinel-os-demo" 
+                   class="bg-transparent border-2 border-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-purple-600 transition">
+                    View on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">The Problem</h2>
+            <div class="max-w-4xl mx-auto">
+                <p class="text-lg text-gray-600 mb-6">
+                    Every company is deploying AI agents. But none of them can answer:
+                </p>
+                <div class="space-y-4">
+                    <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
+                        <p class="font-semibold text-red-600">What did the agent do?</p>
+                    </div>
+                    <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
+                        <p class="font-semibold text-red-600">Why did it do it?</p>
+                    </div>
+                    <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
+                        <p class="font-semibold text-red-600">Can we stop it in time?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">The Solution</h2>
+            <div class="max-w-4xl mx-auto text-center">
+                <p class="text-lg text-gray-600 mb-8">
+                    Sentinel OS sits between your agent and the world.
+                </p>
+                <div class="grid md:grid-cols-2 gap-8 text-left">
+                    <div class="bg-green-50 p-6 rounded-lg">
+                        <h3 class="font-bold text-green-600 mb-2">✔ Approves safe actions</h3>
+                        <p class="text-gray-600">Only allows actions that comply with your policies.</p>
+                    </div>
+                    <div class="bg-green-50 p-6 rounded-lg">
+                        <h3 class="font-bold text-green-600 mb-2">✔ Blocks malicious behavior</h3>
+                        <p class="text-gray-600">Detects and prevents attacks like prompt injection and SQL injection.</p>
+                    </div>
+                    <div class="bg-green-50 p-6 rounded-lg">
+                        <h3 class="font-bold text-green-600 mb-2">✔ Logs every decision</h3>
+                        <p class="text-gray-600">Provides audit logs for compliance and debugging.</p>
+                    </div>
+                    <div class="bg-green-50 p-6 rounded-lg">
+                        <h3 class="font-bold text-green-600 mb-2">✔ Simulates attacks</h3>
+                        <p class="text-gray-600">Test your agents against common attack vectors before deployment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Demo Section -->
+    <section id="demo" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Live Attack Simulation</h2>
+            <div class="max-w-4xl mx-auto">
+                <p class="text-lg text-gray-600 mb-8 text-center">
+                    We inject a malicious prompt into a LangChain agent. Sentinel OS detects and blocks it in real time.
+                </p>
+                
+                <div class="bg-gray-100 p-6 rounded-lg mb-8">
+                    <h3 class="font-bold mb-4">Step 1: Enter a prompt for the AI agent</h3>
+                    <div class="flex gap-4 mb-4">
+                        <input id="userPrompt" type="text" 
+                               class="flex-1 p-3 border rounded-lg" 
+                               placeholder="e.g., Get customer data for 1">
+                        <button onclick="runDemo()" 
+                                class="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition">
+                            Run Demo
+                        </button>
+                    </div>
+                    
+                    <div class="flex gap-4 mb-4">
+                        <button onclick="document.getElementById('userPrompt').value='Get customer data for 1'" 
+                                class="bg-gray-200 px-4 py-2 rounded-lg">
+                            Safe Example
+                        </button>
+                        <button onclick="document.getElementById('userPrompt').value='Get customer data for 1; DROP TABLE customers;'" 
+                                class="bg-gray-200 px-4 py-2 rounded-lg">
+                            Attack Example
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-800 p-6 rounded-lg code-block">
+                    <h3 class="font-bold mb-4 text-white">Step 2: Agent Execution</h3>
+                    <div id="agentOutput" class="demo-output p-4 rounded bg-gray-900">
+                        <p class="text-gray-400">Agent output will appear here...</p>
+                    </div>
+                </div>
+                
+                <div class="mt-8 grid md:grid-cols-2 gap-8">
+                    <div class="bg-blue-50 p-6 rounded-lg">
+                        <h3 class="font-bold text-blue-600 mb-2">Sentinel OS Decision</h3>
+                        <div id="sentinelDecision" class="mt-2">
+                            <p class="text-gray-600">Decision will appear here...</p>
+                        </div>
+                    </div>
+                    <div class="bg-purple-50 p-6 rounded-lg">
+                        <h3 class="font-bold text-purple-600 mb-2">Risk Assessment</h3>
+                        <div id="riskAssessment" class="mt-2">
+                            <p class="text-gray-600">Risk details will appear here...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Integration Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Seamless Integration</h2>
+            <div class="max-w-4xl mx-auto text-center">
+                <p class="text-lg text-gray-600 mb-8">
+                    Works with your existing AI agents in just a few lines of code.
+                </p>
+                <div class="flex justify-center gap-4 mb-8">
+                    <div class="bg-blue-100 px-4 py-2 rounded-full font-semibold">LangChain</div>
+                    <div class="bg-blue-100 px-4 py-2 rounded-full font-semibold">OpenAI Agents</div>
+                    <div class="bg-blue-100 px-4 py-2 rounded-full font-semibold">Custom Agents</div>
+                </div>
+                <div class="code-block p-6 rounded-lg text-left mb-8">
+                    <pre><code>from sentinel.integrations.langchain import SentinelCallbackHandler
+
+sentinel_handler = SentinelCallbackHandler(api_key="YOUR_API_KEY")
+
+agent = initialize_agent(
+    tools=tools,
+    llm=llm,
+    callbacks=[sentinel_handler],  # Sentinel is now active
+    verbose=True
+)</code></pre>
+                </div>
+                <p class="text-lg text-gray-600 mb-8">
+                    Install in 30 seconds:
+                </p>
+                <div class="code-block p-4 rounded-lg text-left mb-8">
+                    <pre><code>pip install sentinel-os</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4 text-gray-800">
+                Stop deploying ungoverned AI agents.
+            </h2>
+            <h3 class="text-2xl font-semibold mb-8 text-gray-700">
+                Start controlling them.
+            </h3>
+            <div class="flex justify-center gap-4">
+                <button onclick="document.getElementById('demo').scrollIntoView({behavior: 'smooth'})" 
+                        class="bg-purple-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-purple-700 transition">
+                    Get Started
+                </button>
+                <a href="https://github.com/yourusername/sentinel-os-demo" 
+                   class="bg-transparent border-2 border-purple-600 text-purple-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-purple-600 hover:text-white transition">
+                    GitHub Repo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-4">Used to secure experimental agent workflows in development and production.</p>
+            <p class="text-gray-400">© 2026 Sentinel OS. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function runDemo() {
+            const userPrompt = document.getElementById('userPrompt').value;
+            const agentOutput = document.getElementById('agentOutput');
+            const sentinelDecision = document.getElementById('sentinelDecision');
+            const riskAssessment = document.getElementById('riskAssessment');
+            
+            // Clear previous output
+            agentOutput.innerHTML = '';
+            sentinelDecision.innerHTML = '';
+            riskAssessment.innerHTML = '';
+            
+            // Simulate agent processing
+            agentOutput.innerHTML += `<p class="text-blue-400">> Agent received prompt: ${userPrompt}</p>`;
+            
+            // Check for attack patterns
+            const isMalicious = userPrompt.includes(';') || userPrompt.toLowerCase().includes('drop table');
+            
+            if (isMalicious) {
+                // Simulate Sentinel blocking the attack
+                agentOutput.innerHTML += `<p class="text-yellow-400">> Sentinel OS analyzing action...</p>`;
+                agentOutput.innerHTML += `<p class="text-red-400">❌ Attack detected: SQL injection</p>`;
+                
+                sentinelDecision.innerHTML = `
+                    <p class="text-red-600 font-bold">❌ Action Denied</p>
+                    <p class="text-gray-600 mt-2">Reason: High-risk SQL injection detected</p>
+                `;
+                
+                riskAssessment.innerHTML = `
+                    <p class="text-gray-600"><strong>Risk Score:</strong> 0.95 (Critical)</p>
+                    <p class="text-gray-600"><strong>Attack Type:</strong> SQL Injection</p>
+                    <p class="text-gray-600"><strong>Action Type:</strong> Database Query</p>
+                `;
+            } else {
+                // Simulate safe execution
+                agentOutput.innerHTML += `<p class="text-yellow-400">> Sentinel OS analyzing action...</p>`;
+                agentOutput.innerHTML += `<p class="text-green-400">✅ Action approved</p>`;
+                agentOutput.innerHTML += `<p class="text-blue-400">> Executing: get_customer_data("${userPrompt.split('for ')[1] || '1'}")</p>`;
+                agentOutput.innerHTML += `<p class="text-green-400">✅ Result: Data for customer ${userPrompt.split('for ')[1] || '1'}</p>`;
+                
+                sentinelDecision.innerHTML = `
+                    <p class="text-green-600 font-bold">✅ Action Allowed</p>
+                    <p class="text-gray-600 mt-2">Reason: Safe database query</p>
+                `;
+                
+                riskAssessment.innerHTML = `
+                    <p class="text-gray-600"><strong>Risk Score:</strong> 0.1 (Low)</p>
+                    <p class="text-gray-600"><strong>Action Type:</strong> Database Query</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
